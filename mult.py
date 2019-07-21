@@ -1,7 +1,3 @@
-# Implemention of Petersen's algorithm for multipling two numbers using a 3 counter machine
-# input is stored in counter A and counter B, third counter used as scratch memory
-# output is stored in counter B
-
 # Correctness verified by testing all tuples (i,j) where 0 <= i,j < 100
 
 def odd(n):
@@ -15,6 +11,9 @@ def div3(n):
 
 def div5(n):
     return n % 5 == 0
+
+# Implemention of Schroeppel's algorithm for multipling two numbers using a 3 counter machine
+# Trick to use one counter to encode the input X and Y as 2^X * 3^Y
 
 def mult1972(A, B):
     X, Y = A, B
@@ -44,6 +43,10 @@ def mult1972(A, B):
             A = A // 5
             A = A * 3
     return B
+
+# Implemention of Petersen's algorithm for multipling two numbers using a 3 counter machine
+# input is stored in counter A and counter B, third counter used as scratch memory
+# output is stored in counter B
 
 def mult2018(A, B):
     # special case: A * 0 = 0
