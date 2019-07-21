@@ -24,6 +24,9 @@ A 3CM with X in counter 1 is able to compute X^2.
 
 Proof: See [square.py](square.py) for the algorithm from schroeppel1972
 
+More generally, minsky1967 proved that a 3CM can compute all partial recursive
+function of one variable and recognize all computably enumerable sets.
+
 
 2CM is Turing complete
 ----------------------
