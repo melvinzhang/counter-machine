@@ -25,13 +25,25 @@ A 3CM with X in counter 1 is able to compute X^2.
 Proof: See [square.py](square.py) for the algorithm from schroeppel1972
 
 
-PRIME not in 2CM
-----------------
+2CM is Turing complete
+----------------------
 
-A 2CM cannot recognize if an input number is prime (see ibarra1993).
+Turing machine 
+
+= FSM with two stacks 
+
+= FSM with four counters 
+
+= FSM with two counters (by encoding the 4 counters as 2^A * 3^B * 5^C * 7^D)
+
+Proved in minsky1967
 
 
-n^k not in 2CM
---------------
+Limitations of 2CM using standard encoding
+------------------------------------------
 
-A 2CM cannot recognize if an input number is of the form n^k for integer k >= 2 (see ibarra1993).
+A 2CM cannot recognize if counter 1 is prime.
+
+A 2CM cannot recognize if counter 1 is of the form n^k for integer k >= 2.
+
+Proved in ibarra1993
