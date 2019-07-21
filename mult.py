@@ -10,7 +10,42 @@ def odd(n):
 def even(n):
     return n % 2 == 0
 
-def mult(A, B):
+def div3(n):
+    return n % 3 == 0
+
+def div5(n):
+    return n % 5 == 0
+
+def mult1972(A, B):
+    X, Y = A, B
+    B = 2 * B + 1
+    assert B == 2*Y + 1
+    while A > 0:
+        B = 2 * B
+        A = A - 1
+    assert B == 2**X * (2*Y + 1)
+    A = 1
+    while even(B):
+        B = B // 2
+        A = A * 2
+    B = B // 2
+    assert A == 2**X and B == Y
+    while B > 0:
+        A = A * 3
+        B = B - 1
+    assert A == 2**X * 3**Y and B == 0
+    while even(A):
+        A = A // 2
+        while div3(A):
+            A = A // 3
+            A = A * 5
+            B = B + 1
+        while div5(A):
+            A = A // 5
+            A = A * 3
+    return B
+
+def mult2018(A, B):
     # special case: A * 0 = 0
     if B == 0: return 0
 
@@ -50,10 +85,10 @@ def mult(A, B):
 
 for i in range(100):
     for j in range(100):
-        print(i,j)
-        k = mult(i,j)
-        print(k)
-        assert i * j == mult(i,j)
+        m2018 = mult2018(i,j)
+        m1972 = mult1972(i,j)
+        print(i, j, m2018)
+        assert i * j == m2018 == m1972
 
-print("Correct")
+print("All tests passed")
 
