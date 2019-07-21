@@ -45,8 +45,10 @@ Proved in minsky1967
 Limitations of 2CM using standard encoding
 ------------------------------------------
 
+schroeppel1972 showed that given n in counter 1, 2CM cannot compute 2^n
+
+The following are due to ibarra1993:
+
 A 2CM cannot recognize if counter 1 is prime.
 
 A 2CM cannot recognize if counter 1 is of the form n^k for integer k >= 2.
-
-Proved in ibarra1993
