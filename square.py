@@ -2,7 +2,6 @@
 # Trick is to use the fact that N^2 = 1 + 3 + ... + (2N - 3) + (2N - 1)
 
 def square1972(A):
-    N = A
     B = 0
     C = 0
     while A > 0:
