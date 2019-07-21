@@ -20,4 +20,6 @@ Proof: Two algorithms are given in [mult.py](mult.py), one from schroeppel1972 a
 Squaring with 3CM
 -----------------
 
-A 3CM with X in counter 1 is able to compute X^2 
+A 3CM with X in counter 1 is able to compute X^2.
+
+Proof: See [square.py](square.py) for the algorithm from schroeppel1972
