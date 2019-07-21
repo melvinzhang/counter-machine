@@ -23,3 +23,15 @@ Squaring with 3CM
 A 3CM with X in counter 1 is able to compute X^2.
 
 Proof: See [square.py](square.py) for the algorithm from schroeppel1972
+
+
+PRIME not in 2CM
+----------------
+
+A 2CM cannot recognize if an input number is prime (see ibarra1993).
+
+
+n^k not in 2CM
+--------------
+
+A 2CM cannot recognize if an input number is of the form n^k for integer k >= 2 (see ibarra1993).
