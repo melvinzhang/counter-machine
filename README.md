@@ -9,6 +9,24 @@ The possible instructions are
 1) increment counter i, jump to line n
 2) decrement counter i, if successful jump to line n else jump to line m
 
+Also known as a [Minsky Machine](https://esolangs.org/wiki/Minsky_machine)
+
+Largest sum
+-----------
+Given a starting configuration with n in counter 1. For a program with m instructions, what is the halting configuration with the largest sum of all counters?
+
+The following table lists lower bounds for some m. See [largest_sum.py](largest_sum.py) for the programs that achieves the lower bound.
+
+| m | s |
+|---|---|
+| 3 | 2n |
+| 4 | 3n |
+| 8 | 2^(2n) |
+| 9 | 2^n 3^n |
+| 10 | 3^(2n) |
+| 11 | 2^(4n) |
+
+
 Multiplication with 3CM
 -----------------------
 
