@@ -9,15 +9,27 @@ The possible instructions are
 1) increment counter i, jump to line n
 2) decrement counter i, if successful jump to line n else jump to line m
 
-Also known as a [Minsky Machine](https://esolangs.org/wiki/Minsky_machine)
+Also known as a [Minsky machine](https://esolangs.org/wiki/Minsky_machine)
 
 Largest sum
 -----------
-Given a starting configuration with n in counter 1. For a program with m instructions, what is the halting configuration with the largest sum of all counters?
+Let s(m) be the largest sum of all counters after executing a program with m instructions.
+
+s(m) >= m since we can construct a program with m increment instructions.
+
+| m | s |
+|---|---|
+| 7 | 9 |
+
+Largest function
+----------------
+Given a starting configuration with n in counter 1. Let f(n) be the sum of all
+counters for a halting configuration. What is the largest f that can be computed
+with m instructions.
 
 The following table lists lower bounds for some m. See [largest_sum.py](largest_sum.py) for the programs that achieves the lower bound.
 
-| m | s |
+| m | f |
 |---|---|
 | 3 | 2n |
 | 4 | 3n |

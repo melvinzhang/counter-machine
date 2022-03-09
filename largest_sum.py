@@ -19,6 +19,10 @@ def sim(f, n):
     f(r)
     return sum(r.values())
 
+def check(n, res, expected):
+    assert res == expected, (res, expected)
+    print(n, res)
+
 # conjecture: 2n is optimal for 3 instructions
 def double(r):
     while dec(r, 0):
@@ -124,11 +128,22 @@ def exp10b(r):
             inc(r, 1)
             inc(r, 1)
 
-def check(n, res, expected):
-    assert res == expected, (res, expected)
-    print(n, res, expected)
+# 7 instructions that output 9, more efficient that using all inc
+def sum7(r):
+    inc(r, 0)
+    inc(r, 0)
+    inc(r, 0)
+    while dec(r, 0):
+        inc(r, 1)
+        inc(r, 1)
+        inc(r, 1)
+
+n = 0
+print(f"--- largest sum ---")
+check(7, sim(sum7, n), 9)
 
 n = 5
+print(f"--- largest function (n = {n}) ---")
 check(3, sim(add, n), n+3)
 check(3, sim(double, n), 2*n)
 
