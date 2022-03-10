@@ -32,6 +32,7 @@ The following table lists lower bounds for some m. See [largest_sum.py](largest_
 |---|---|
 | 3 | 2n |
 | 4 | 3n |
+| 7 | 2^n |
 | 8 | 2^(2n) |
 | 9 | 2^n 3^n |
 | 10 | 3^(2n) |

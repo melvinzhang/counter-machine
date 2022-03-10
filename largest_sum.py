@@ -89,6 +89,16 @@ def exp11(r):
             inc(r, 1)
             inc(r, 1)
 
+# computes 2^n using 7 instructions
+def exp7(r):
+    inc(r, 1)
+    while dec(r, 0):
+        while dec(r, 1):
+            inc(r, 3)
+            inc(r, 3)
+        while dec(r, 3):
+            inc(r, 1)
+
 # computes 2^(2n) using 8 instructions
 def exp8(r):
     inc(r, 1)
@@ -150,6 +160,7 @@ check(3, sim(double, n), 2*n)
 check(4, sim(incdouble, n), 2*(n+1))
 check(4, sim(triple, n), 3*n)
 
+check(7, sim(exp7, n), 2**n)
 check(8, sim(exp8, n), 2**(2*n))
 check(9, sim(exp9, n), n*2**n)
 check(9, sim(exp9b, n), 2**(2*n+1))
