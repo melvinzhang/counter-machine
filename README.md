@@ -23,9 +23,8 @@ s(m) >= m since we can construct a program with m increment instructions.
 
 Largest function
 ----------------
-Given a starting configuration with n in counter 1. Let f(n) be the sum of all
-counters for a halting configuration. What is the largest f that can be computed
-with m instructions.
+Given a starting configuration with n in counter 1. Let f(n,m) be the largest sum of all
+counters after executing a program with m instructions.
 
 The following table lists lower bounds for some m. See [largest_sum.py](largest_sum.py) for the programs that achieves the lower bound.
 
