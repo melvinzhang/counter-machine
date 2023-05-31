@@ -30,8 +30,8 @@ def run(prog, init = 1):
     return sum(r.values()), cnt
 
 class Tracker:
-    def __init__(self):
-        self.init = 0
+    def __init__(self, init):
+        self.init = init
         self.max_sum = 0
         self.max_term = 0
 
@@ -41,31 +41,35 @@ class Tracker:
             self.max_sum = out
             print(prog, self.max_sum, cnt)
         if cnt < 0 and -cnt > self.max_term:
-            print("terminated", prog, self.max_term)
             self.max_term = -cnt
+            print("terminated", prog, self.max_term)
         return cnt >= 0
 
 def gen_prog(nr, k, exe, acc = []):
     terminated = exe.add(acc)
     if len(acc) == k or not terminated:
         return
-    # sequence of incs should be non-decreasing register idx
+    # append inc, sequence of incs should be non-decreasing register idx
     lower = acc[-1] if acc and isinstance(acc[-1], int) else 1
     for i in range(lower,nr+1):
         acc.append(i)
         gen_prog(nr, k, exe, acc)
         acc.pop()
+    # append dec
     for i in range(1,nr+1):
-        for j in range(1,len(acc)+1):
+        for j in range(2,len(acc)+1):
             # do not allow inc i within dec i j
             if i in acc[-j:]:
                 break
+            # dest must be inc
+            if not isinstance(acc[-j], int):
+                continue
             acc.append( (i,j) )
             gen_prog(nr, k, exe, acc)
             acc.pop()
 
 def search():
-    gen_prog(3, 9, Tracker())
+    gen_prog(3, 11, Tracker(0))
 
 def main():
     prog = [2, 2, (3, 2), 3, 3, (2, 2), (1, 6)]
@@ -73,14 +77,22 @@ def main():
         print(run(prog, init=i, max_cnt=10000000))
 
 # (r=3,k=7,n=0) [1, 1, 1, 2, 2, 2, (1, 3)] sum=12 steps=19
+# no difference for r=4
 
-# computes 2^(2*n+1) - 2
+# computes 2^(2*(n+1)+1) - 2
 # (r=3,k=7,n=1) [2, 2, (3, 2), 3, 3, (2, 2), (1, 6)] sum=30 steps=80
+# no difference for r=4
 
 # (r=3,k=8,n=0) [1, 2, 2, (3, 2), 3, 3, (2, 2), (1, 6)] sum=30 steps=81
-# (r=3,k=8,n=1) [1, 2, 2, (3, 2), 3, 3, (2, 2), (1, 6)] sum=126 steps=364
+# no difference for r=4
 
-# (r=3,k=9,n=0) ?
+# (r=3,k=8,n=1) [1, 2, 2, (3, 2), 3, 3, (2, 2), (1, 6)] sum=126 steps=364
+# no difference for r=4
+
+# (r=3,k=9,n=0) at least 126 (proved 126 assuming jump at least 2, and dest must be inc)
+# (r=3,k=10,n=0) at least 510 (proved 510 assuming jumnp at least 2 and dest must be inc)
+
+# (r=3,k=11,n=0) [1, 1, 1, 2, 2, (3, 2), 3, 3, 3, (2, 3), (1, 7)] sum=2331 steps=5116
 
 if __name__ == "__main__":
     search()
