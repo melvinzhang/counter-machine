@@ -4,15 +4,13 @@ from collections import defaultdict
 # dec is a pair of (register, lines to jump backwards)
 # a program is a list of inc and dec instructions
 
-# 2n + 2
-prog = [2, 2, (1, 2)]
-
-def run(prog, init = 1, max_cnt = 500):
+def run(prog, init = 1):
     r = defaultdict(int)
     r[1] = init
     pc = 0
     cnt = 0
-    while 0 <= pc < len(prog) and cnt < max_cnt:
+    last_dec = {}
+    while 0 <= pc < len(prog):
         cnt += 1
         instr = prog[pc]
         if isinstance(instr, int):
@@ -21,25 +19,30 @@ def run(prog, init = 1, max_cnt = 500):
         else:
             idx, jmp = instr
             if r[idx] > 0:
+                if pc in last_dec and r[idx] >= last_dec[pc]:
+                    return 0, -cnt
+                last_dec[pc] = r[idx]
                 r[idx] -= 1
                 pc -= jmp
             else:
+                last_dec.pop(pc, None)
                 pc += 1
-    if cnt < max_cnt:
-        return sum(r.values()), cnt
-    else:
-        return -1, -1
+    return sum(r.values()), cnt
 
 class Tracker:
     def __init__(self):
-        self.init = 1
+        self.init = 0
         self.max_sum = 0
+        self.max_term = 0
 
     def add(self, prog):
         out, cnt = run(prog, self.init)
         if out > self.max_sum:
             self.max_sum = out
             print(prog, self.max_sum, cnt)
+        if cnt < 0 and -cnt > self.max_term:
+            print("terminated", prog, self.max_term)
+            self.max_term = -cnt
         return cnt >= 0
 
 def gen_prog(nr, k, exe, acc = []):
@@ -62,7 +65,7 @@ def gen_prog(nr, k, exe, acc = []):
             acc.pop()
 
 def search():
-    gen_prog(3, 7, Tracker()) 
+    gen_prog(3, 9, Tracker())
 
 def main():
     prog = [2, 2, (3, 2), 3, 3, (2, 2), (1, 6)]
@@ -76,6 +79,8 @@ def main():
 
 # (r=3,k=8,n=0) [1, 2, 2, (3, 2), 3, 3, (2, 2), (1, 6)] sum=30 steps=81
 # (r=3,k=8,n=1) [1, 2, 2, (3, 2), 3, 3, (2, 2), (1, 6)] sum=126 steps=364
+
+# (r=3,k=9,n=0) ?
 
 if __name__ == "__main__":
     search()
