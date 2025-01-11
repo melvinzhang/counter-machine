@@ -88,3 +88,17 @@ The following are due to ibarra1993:
 A 2CM cannot recognize if counter 1 is prime.
 
 A 2CM cannot recognize if counter 1 is of the form n^k for integer k >= 2.
+
+
+Decidable 2CM problems
+----------------------
+instruction set:
+* inc c: reg[c] += 1; pc += 1
+* dec c q: if reg[c] == 0 pc += 1 else reg[c] -= 1; pc = q
+
+Decidable problems:
+* halting of reversible 2CM
+* is there a bound on number of reachable configurations form any starting configuration
+* is there a bound on number of steps in any run from any starting configuration
+
+Proved in Certified Decision Procedures for Two-Counter Machines
