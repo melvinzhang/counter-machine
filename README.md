@@ -19,7 +19,13 @@ s(m) >= m since we can construct a program with m increment instructions.
 
 | m | s |
 |---|---|
-| 7 | 9 |
+| 7 | 12 |
+| 8 | 30 |
+| 9 | 126 |
+| 10 | 510 |
+| 11 | 2331 |
+
+See [incdec.py](incdec.py)
 
 Largest function
 ----------------
