@@ -75,7 +75,7 @@ Turing machine
 
 = FSM with two counters (by encoding the 4 counters as 2^A * 3^B * 5^C * 7^D)
 
-Proved in minsky1967
+Proved in minsky1967.
 
 
 Limitations of 2CM using standard encoding
@@ -84,10 +84,8 @@ Limitations of 2CM using standard encoding
 schroeppel1972 showed that given n in counter 1, 2CM cannot compute 2^n
 
 The following are due to ibarra1993:
-
-A 2CM cannot recognize if counter 1 is prime.
-
-A 2CM cannot recognize if counter 1 is of the form n^k for integer k >= 2.
+* A 2CM cannot recognize if counter 1 is prime
+* A 2CM cannot recognize if counter 1 is of the form n^k for integer k >= 2
 
 
 Decidable 2CM problems
@@ -98,7 +96,9 @@ instruction set:
 
 Decidable problems:
 * halting of reversible 2CM
-* is there a bound on number of reachable configurations form any starting configuration
-* is there a bound on number of steps in any run from any starting configuration
+* is there a uniform bound on number of reachable configurations
+* is there a uniform bound on number of steps in any run
 
-Proved in Certified Decision Procedures for Two-Counter Machines
+Uniform means from any starting configuration.
+
+Proved in Certified Decision Procedures for Two-Counter Machines.
