@@ -11,6 +11,9 @@ The possible instructions are
 
 Also known as a [Minsky machine](https://esolangs.org/wiki/Minsky_machine)
 
+A restricted version where increment or failed decrement jumps to the next line
+is Turing complete for two counters.
+
 Largest sum
 -----------
 Let s(m) be the largest sum of all counters after executing a program with m instructions.
