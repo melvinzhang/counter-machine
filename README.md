@@ -98,7 +98,7 @@ instruction set:
 * dec c q: if reg[c] == 0 pc += 1 else reg[c] -= 1; pc = q
 
 Decidable problems:
-* halting for a 2CM where dec jumps to q if reg[c] == 0
+* halting for a 2CM where failed dec jumps to q
 * halting of reversible 2CM
 * is there a uniform bound on number of reachable configurations
 * is there a uniform bound on number of steps in any run
